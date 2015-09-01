@@ -1,0 +1,41 @@
+<!doctpye html>
+	<html>
+		<title> Menu </title>
+		<meta charset = 'utf-8'>
+		<style>
+			table,th,td{
+				border:1px solid black;
+			}
+		</style>
+		</head>
+		<booy>
+		<p>你現在位置是 {{path}}</p>
+		{% for r in restaurants %}
+		<h2>{{r.name}}</h2>
+		{% if r.food_set.all %}
+		<p>本餐廳共有 {{r.food_set.all|length}} 道菜</p>
+		<table>
+			<tr>
+			<th>菜名</th>
+			<th>價格</th>
+			<th>辣不辣</th>
+			<th>註解</th>
+			</tr>
+		{%for food in r.food_set.all reversed%}
+		<tr>
+                <td>{{food.name}} </td>
+                <td>{{food.price}} </td>
+                <td>{%if food.is_spicy%}辣{%else%}不辣{%endif%} </td>
+		<td>{{food.comment}}</td>
+		</tr>
+		{%endfor%}
+		</table>
+
+		{%else%}
+			<p>什麼都沒</p>
+		{% endif %}
+		{% endfor %}
+		</body>
+	</html>
+
+

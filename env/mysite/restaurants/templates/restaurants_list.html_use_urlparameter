@@ -1,0 +1,28 @@
+<!doctype html>
+	<html>
+		<head>
+			<title> Restaurants </title>
+			<meta charset='utf-8'>
+		</head>
+		<body>
+			<h2>餐廳列表</h2>
+			<form action="/menu" method="get">
+			<table>
+				<tr>
+					<th>選取</th>
+					<th>店名</th>
+					<th>電話</th>
+					<th>地址</th>
+				</tr>
+				{% for r in restaurants %}
+				<tr>
+					<td><a href="/menu/{{r.id}}"> menu</a></td>
+					<td>{{r.name}}</td>
+					<td>{{r.phone_number}}</td>
+					<td>{{r.address}}</td>
+				</tr>
+				{%endfor%}
+			</table>
+			</form>
+		</body>
+	</html>
