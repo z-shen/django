@@ -14,7 +14,7 @@
 					<th>時間</th>
 					<th>評價</th>
 			            </tr>
-				{%for c in r.comment_set_all %}
+				{% for c in r.comment_set.all %}
 				  <tr>
 					<td>{{c.visitor}}</td>
 					<td>{{c.date_time | date:"F j,Y"}}</td>

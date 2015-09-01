@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 
-from restaurants.models import Restaurant,Food
+from restaurants.models import Restaurant,Food,Comment
 
 def here(request):
 	return HttpResponse('Mom, 我在這')
@@ -62,5 +62,6 @@ def comment(request,id):
 			visitor = visitor,
 			email = email,
 			date_time = date_time,
-			restaurant =r )
+			content = content,
+			restaurant = r )
 	return render_to_response('comments.html',locals())
