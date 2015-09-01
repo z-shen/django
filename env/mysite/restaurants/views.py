@@ -5,6 +5,7 @@ from django import template
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from django.template import RequestContext
 
 from restaurants.models import Restaurant,Food,Comment
 
@@ -64,4 +65,5 @@ def comment(request,id):
 			date_time = date_time,
 			content = content,
 			restaurant = r )
-	return render_to_response('comments.html',locals())
+	# return render_to_response('comments.html',locals())
+	return render_to_response('comments.html',RequestContext(request,locals()))
