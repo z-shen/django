@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 admin.autodiscover()
-from views import welcome
+from views import welcome,login,index,logout
 from restaurants.views import here,add,menu,meta,list_restaurants,comment
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -27,4 +27,7 @@ urlpatterns = [
     url(r'^welcome/$',welcome),
     url(r'^restaurants_list/$',list_restaurants),
     url(r'^comment/(\d{1,5})/$',comment),
+    url(r'^index/$',index),
+    url(r'^accounts/logout/$',logout),
+    url(r'^accounts/login/$',login),
 ]
