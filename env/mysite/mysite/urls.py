@@ -19,6 +19,8 @@ admin.autodiscover()
 from django.contrib.auth.views import login,logout
 from views import welcome,index
 from restaurants.views import here,add,menu,meta,list_restaurants,comment
+from django.contrib.auth.decorators import login_required
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^here/$', here),
@@ -26,7 +28,7 @@ urlpatterns = [
     url(r'^menu/(\d{1,5})/$',menu),
     url(r'^meta/$',meta),
     url(r'^welcome/$',welcome),
-    url(r'^restaurants_list/$',list_restaurants),
+    url(r'^restaurants_list/$',login_required(list_restaurants)),
     url(r'^comment/(\d{1,5})/$',comment),
     url(r'^index/$',index),
     url(r'^accounts/logout/$',logout),
