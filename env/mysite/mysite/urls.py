@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 admin.autodiscover()
 from django.contrib.auth.views import login,logout
-from views import welcome,index
+from views import welcome,index,register
 from restaurants.views import here,add,menu,meta,list_restaurants,comment
 from django.contrib.auth.decorators import login_required
 
@@ -33,5 +33,6 @@ urlpatterns = [
     url(r'^index/$',index),
     url(r'^accounts/logout/$',logout),
     url(r'^accounts/login/$',login),
+    url(r'^accounts/register/$',register),
 
 ]

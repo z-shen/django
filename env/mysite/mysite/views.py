@@ -6,6 +6,8 @@ from django.shortcuts import render_to_response
 from django.contrib import auth
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import UserCreationForm
+
 
 def here(request):
 	return HttpResponse('Mom, 我在這')
@@ -52,5 +54,18 @@ def login(request):
 def logout(request):
 	auth.logout(request)
 	return HttpResponseRedirect('/index')
+
 def index(request):
 	return render_to_response('index.html',RequestContext(request, locals()))
+
+def register(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			return HttpResponseRedirect('/accounts/login/')
+	else:
+		form = UserCreationForm()
+	return render_to_response('register.html',RequestContext(request,locals()))
+		
+
