@@ -48,7 +48,8 @@ def meta(request):
 
 def list_restaurants(request):
 	restaurants = Restaurant.objects.all()
-	return render_to_response('restaurants_list.html',locals()) 
+	print request.user.user_permissions.all()
+	return render_to_response('restaurants_list.html',locals(),context_instance=RequestContext(request)) 
 
 def comment(request,id):
 	if id:
